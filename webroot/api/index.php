@@ -51,13 +51,13 @@ function get_analytics($countrydataarr,$num_results,$country_input) {
         $region_data['altsp'] = $altSp;
         //handle cases where no region is given
         if ($country->region === "") { 
-            $country->region = 'None';
+            $country->region = 'No Region';
         } 
         $region_data['analytics']['region'][$country->region]['count'] += 1; //use hash to count instances
         $region_data['analytics']['region'][$country->region]['name'] = $country->region; //need separate name node for sorting by count
         //handle cases where no subregion is given
         if ($country->subregion === "") { 
-            $country->subregion = 'None';
+            $country->subregion = 'No Subregion';
         }
         $region_data['analytics']['region'][$country->region]['subregions'][$country->subregion]['count'] += 1; //use hash to count instances
         $region_data['analytics']['region'][$country->region]['subregions'][$country->subregion]['name'] = $country->subregion; //need separate name node for sorting by count
