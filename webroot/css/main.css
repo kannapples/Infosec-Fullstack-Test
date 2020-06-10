@@ -1,3 +1,248 @@
 /*
 This css file is a placeholder. Use this or roll your own, choice is yours.
 */
+#loading img{
+    margin-top: 2em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(100% / 3);
+    max-width: 12em;
+    height: auto;
+}
+#header {
+    text-align: center;
+    color: #000;
+    padding: 2em;
+    width: 100%;
+}
+#country-search {
+    text-align: center;
+    padding: 2em;
+    background-color: #bda148;
+}
+#search-analytics {
+    background-color: #e1e3e3;
+}
+#search-analytics-header {
+    text-align: center;
+}
+#search-analytics-title {
+    text-align: center;
+    display: block;
+    font-size: 2em;
+    padding-top: 1em;
+}
+#search-analytics-subtitle {
+    text-align: center;
+    display: block;
+    padding-bottom: 1.5em;
+}
+#country-search-form {
+    display: inline-block;
+}
+#country-display {
+    max-width: 100%;
+    margin-bottom: 2em;
+}
+#instruction-text {
+    padding-bottom: 1em;
+}
+#error-text {
+    display: none;
+    text-align: center;
+}
+#num-results {
+    font-size: 1.3em;
+    text-align: center;
+    background-color: #bda148;
+    border: 0.1em solid #333529;
+    display: inline-block;
+    padding: 0.5em;
+    border-radius: 0.3em;
+    margin-top: 0.7em;
+    margin-bottom: 2em;
+}
+#search-type-btns {
+    display: inline-block;
+    margin: 0em 1em;
+    position: relative;
+    top: 1em;
+}
+#country-input {
+    display: inline-block;
+    padding-top: 0.5em;
+    position: relative;
+    top: 0.3em;
+}
+#submit-btn {
+    background-color: #1a285a;
+    color: #ececeb;
+    margin: 1em;
+}
+#analytics-data {
+    margin: 0em 1.5em;
+    padding-bottom: 2em;
+}
+.country {
+    margin: 0.3em;
+    border-radius: 0.3em;
+    padding: 1em;
+}
+.country-info {
+    display: flex;
+    padding: 0.3em 0em 0.3em 1em;
+    border-bottom: 0.1em solid #b9baba;
+}
+.country-info-label {
+    display: inline-block;
+    flex: 1;
+    padding-right: 0.5em;
+    white-space: nowrap;
+}
+.country-info-text {
+    display: inline-block;
+    flex: 1;
+}
+.region-info {
+    font-size: 1.3em;
+    background-color: #798f6f;
+    text-align: center;
+    padding: 0.5em 0em;
+    border: 0.1em solid #0f182f;
+    border-radius: 0.3em 0.3em 0em 0em;
+}
+.region-label {
+    flex: 2;
+}
+.region-text {
+    flex: 1;
+}
+.no-bot-border {
+    border-bottom: none!important;
+}
+.lang-info {
+    display: block;
+}
+.title-container {
+    background-color: #798f6f;
+    border: 0.1em solid #333529;
+    border-radius: 0.3em 0.3em 0em 0em;
+    min-height: 84px;
+    padding: 0.5em;
+    text-align: center;  
+}
+.title {
+    font-size: 1.7em;
+    display: flex;
+    flex-direction: column;
+}
+.country-flag img{
+    width: 100%;
+    object-fit: contain;
+    margin: 0em 1em;
+}
+.search-type-btn {
+    background-color: #fff;
+    margin: 0em;
+    padding: 0.5em;
+    border: none;
+    float: left;
+}
+.search-type-btn-left {
+    border-radius: 0.25rem 0rem 0rem 0.25rem;
+}
+.search-type-btn-right {
+    border-radius: 0rem 0.25rem 0.25rem 0rem;
+}
+.active {
+    background-color: #798f6f;
+    -webkit-box-shadow: inset 0px 0px 5px #333529;
+     -moz-box-shadow: inset 0px 0px 5px #333529;
+          box-shadow: inset 0px 0px 5px #333529;
+}
+.region-title {
+    font-size: 1.3em;
+    display: inline-block;
+}
+.vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+.region-count {
+    font-size: 1.3em;
+}
+.country-altsp {
+    text-align: center;
+    font-size: 1em;
+    font-style: italic;
+}
+div.country-container {
+    margin: 2em 0.0em;
+    border-radius: 0.3em;
+    padding: 1em 1.5em;
+}
+.country-info-container {
+    padding: 0.7em 1.2em;
+}
+.region-container {
+    min-width: 45%;
+}
+.region {
+    margin-bottom: 1em;
+}
+.subregion-container {
+    /* background-color: #8b8c93; */
+    margin: 0.5em 0em;
+}
+.subregion-info {
+    padding: 0.3em 0em ;
+    text-align: center;
+    border-bottom: 0.1em solid #a3a3a3;
+    margin: 0em 0.2em;
+}
+.subregion-label {
+    flex: 2;
+}
+.subregion-text {
+    flex: 1;
+}
+
+/* ////////////// */
+/* MEDIA QUERIES */
+/* ////////////// */
+@media screen and (max-width: 1199px){
+    .country-info-text {
+        flex: 1;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .country-info-text {
+        flex: 2;
+    }
+}
+/* // Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .country-flag {
+        margin-top: 1em;
+        display: block;
+        text-align: center;
+    }
+    .country-flag img {
+        margin: 0em;
+    }
+    #search-type-btns {
+        position: inherit;
+        display: block;
+        margin: 0em 2em 4em 2em;
+    }
+    #country-input {
+        position: inherit;
+        display: block;
+        margin-bottom: 1em;
+    }
+}
