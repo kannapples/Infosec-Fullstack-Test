@@ -1,6 +1,3 @@
-//Write your javascript here, or roll your own. It's up to you.
-//Make your ajax call to http://localhost:8765/api/index.php here
-
 function getCountries() {
     resetHtml(); // empty out html so no leftover information is displayed
     const country_input = document.getElementById('country-input').value;
@@ -34,11 +31,9 @@ function handleResponse(serverResponse) {
         document.getElementById('error-text').style.display = 'block';
         document.getElementById('error-text').innerHTML = 'No input given. Please enter a country name or country code to search.'
     } else {
-        // console.log(serverResponse);
         const json_response_data = JSON.parse(serverResponse); //convert server response from JSON to Javascript object
         parseCountryData(json_response_data['data'][0], json_response_data['altsp'][0]);
         parseCountryAnalytics(json_response_data['analytics'][0]);
-        // window.setTimeout(resetCountryTitleHeights, 3000);
     }
 }
 
@@ -66,7 +61,7 @@ function parseCountryAnalytics(analytics_data) {
 }
 
 function countryHTML(root, countries_info_html, country_altsp) {
-    countries_info_html.data += "<div class='country-container col-lg-6 col-12'>";
+    countries_info_html.data += "<div class='country-container col-lg-6'>";
     countries_info_html.data += "<div class='title-container d-flex flex-column justify-content-center'>";
     countries_info_html.data += "<span class='title '>"+root["name"]+"</span>";
     if (country_altsp != null) {
@@ -75,32 +70,31 @@ function countryHTML(root, countries_info_html, country_altsp) {
     countries_info_html.data += "</div>"; //end title-container
     countries_info_html.data += "<div class='country-info-container row'>";
     countries_info_html.data += "<div class='col-sm-8'>";
-    countries_info_html.data += "<div class='row '>";
-    countries_info_html.data += "<div class='col-12 col-xl-6 col-lg-12 col-md-6 country-info'>";
+    countries_info_html.data += "<div class='row'>";
+    countries_info_html.data += "<div class='col-xl-6 col-lg-12 col-md-6 country-info'>";
     countries_info_html.data += "<div class='country-info-label'>Alpha Codes: </div>";
-    countries_info_html.data += "<div class='country-info-text '>"+root["alpha2Code"]+" / "+root["alpha3Code"]+"</div></div>"; //end country-info-label
-    countries_info_html.data += "<div class='col-xl-6 col-lg-12 col-md-6 col-12 country-info'>";
+    countries_info_html.data += "<div class='country-info-text '>"+root["alpha2Code"]+" / "+root["alpha3Code"]+"</div></div>"; //end country-info
+    countries_info_html.data += "<div class='col-xl-6 col-lg-12 col-md-6 country-info'>";
     countries_info_html.data += "<div class='country-info-label'>Population: </div>";
-    countries_info_html.data += "<div class='country-info-text'>"+root["population"].toLocaleString()+"</div></div>"; //end country-info-label
-    countries_info_html.data += "<div class='col-xl-6 col-lg-12 col-md-6 col-12 country-info'>";
+    countries_info_html.data += "<div class='country-info-text'>"+root["population"].toLocaleString()+"</div></div>"; //end country-info
+    countries_info_html.data += "<div class='col-xl-6 col-lg-12 col-md-6 country-info'>";
     countries_info_html.data += "<div class='country-info-label'>Region: </div>";
-    countries_info_html.data += "<div class='country-info-text'>"+root["region"]+"</div></div>"; //end country-info-label
-    countries_info_html.data += "<div class='col-xl-6 col-lg-12 col-md-6 col-12 country-info'>";
+    countries_info_html.data += "<div class='country-info-text'>"+root["region"]+"</div></div>"; //end country-info
+    countries_info_html.data += "<div class='col-xl-6 col-lg-12 col-md-6 country-info'>";
     countries_info_html.data += "<div class='country-info-label'>Subregion: </div>";
-    countries_info_html.data += "<div class='country-info-text'>"+root["subregion"]+"</div></div>"; //end country-info-label
-    countries_info_html.data += "<div class='col-xl-6 col-lg-12 col-md-6 col-12 country-info no-bot-border'>";
+    countries_info_html.data += "<div class='country-info-text'>"+root["subregion"]+"</div></div>"; //end country-info
+    countries_info_html.data += "<div class='col-xl-6 col-lg-12 col-md-6 country-info no-bot-border'>";
     countries_info_html.data += "<div class='country-info-label'>Language(s): </div>";
     countries_info_html.data += "<div class='country-info-text'>";
     const lang_arr = Object.entries(root["languages"]);
     lang_arr.forEach(index => {
         countries_info_html.data += "<div class='lang-info'>"+index[1]["name"]+" ("+index[1]["nativeName"]+")</div>";
     })
-    countries_info_html.data += "</div></div></div></div>" //end country-info-label,col-6, row, col-8
+    countries_info_html.data += "</div></div></div></div>" //end country-info, row, col-sm-8, country-info-continer
     countries_info_html.data += "<div class='col-sm-4 country-flag'>"; 
-
     countries_info_html.data += "<img src="+root["flag"]+">";
 
-    countries_info_html.data += "</div></div></div>"; //end col-4, country-info-container, country-container
+    countries_info_html.data += "</div></div>"; //end country-flag, country-container
 }
 
 function analyticsHTML(region_analytics, search_analytics_html, num_results) {
@@ -125,13 +119,13 @@ function analyticsHTML(region_analytics, search_analytics_html, num_results) {
                 }
                 search_analytics_html.data += "<div class='subregion-label'>"+subregion['name']+":</div>";
                 search_analytics_html.data += "<div class='subregion-text'>"+subregion['count']+"</div>"
-                search_analytics_html.data += "</div>"; //end row, col-lg-3
+                search_analytics_html.data += "</div>"; //end subregion-info
                 subregion_counter ++;
             }            
         }
-        search_analytics_html.data += "</div></div>" //end subregion-container, flex-column
+        search_analytics_html.data += "</div></div>" //end subregion-container, region
     };
-    search_analytics_html.data += "</div>"; //end d-flex
+    search_analytics_html.data += "</div>"; //end analytics-data
 }
 
 // empty out html so no leftover information is displayed
