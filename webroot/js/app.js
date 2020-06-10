@@ -90,11 +90,11 @@ function countryHTML(root, countries_info_html, country_altsp) {
     lang_arr.forEach(index => {
         countries_info_html.data += "<div class='lang-info'>"+index[1]["name"]+" ("+index[1]["nativeName"]+")</div>";
     })
-    countries_info_html.data += "</div></div></div></div>" //end country-info, row, col-sm-8, country-info-continer
+    countries_info_html.data += "</div></div></div></div>" //end country-info-text, country-info, row, col-sm-8, country-info-container
     countries_info_html.data += "<div class='col-sm-4 country-flag'>"; 
     countries_info_html.data += "<img src="+root["flag"]+">";
 
-    countries_info_html.data += "</div></div>"; //end country-flag, country-container
+    countries_info_html.data += "</div></div></div>"; //end country-flag, country-info-container ,country-container
 }
 
 function analyticsHTML(region_analytics, search_analytics_html, num_results) {

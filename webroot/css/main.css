@@ -244,4 +244,7 @@ div.country-container {
         display: block;
         margin-bottom: 1em;
     }
+    .country-info-text {
+        text-align: right;
+    }
 }
