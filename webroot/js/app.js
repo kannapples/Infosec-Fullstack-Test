@@ -31,7 +31,7 @@ function handleResponse(serverResponse) {
         document.getElementById('error-text').style.display = 'block';
         document.getElementById('error-text').innerHTML = 'No input given. Please enter a country name or country code to search.'
     } else {
-        console.log(serverResponse);
+        // console.log(serverResponse);
         const json_response_data = JSON.parse(serverResponse); //convert server response from JSON to Javascript object
         parseCountryData(json_response_data['data'][0], json_response_data['altsp'][0]);
         parseCountryAnalytics(json_response_data['analytics'][0]);

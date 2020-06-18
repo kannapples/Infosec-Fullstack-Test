@@ -30,6 +30,7 @@ class CountryData {
 				// build analytics object for footer and get alt spelling information
 				$analytics_data = $this->buildAnalyticsData($sortedCountryDataArr, $num_results, $_POST);
 				// sort analytics object 
+				// var_dump($analytics_data);
 				$countryanalytics = $this->sortAnalytics($analytics_data);
 				// return results to app.js
 				echo json_encode(['data' => [$sortedCountryDataArr], 'analytics' => [$countryanalytics['analytics']], 'altsp' => [$countryanalytics['altsp']]]); 
@@ -65,14 +66,15 @@ class CountryData {
 	}
 	// calculate region, subregion counts and alt spelling results
 	private function sortAnalytics($analytics_data) {
-		
+		// $regions = $analytics_data["analytics"]["region"];
 		// sort regions based on count
-		$this->sort_regions($analytics_data["analytics"]["region"]);
-
-		foreach($analytics_data["analytics"]["region"] as $region) {
+		$analytics_data["analytics"]["region"] = $this->sort_regions($analytics_data["analytics"]["region"]);
+		$regions = $analytics_data["analytics"]["region"];
+		foreach($regions as $region) {
+			
 			$region_name = $region['name'];
 			//sort subregions based on count
-			$this->sort_subregions($analytics_data['analytics']['region'][$region_name]['subregions']);
+			$analytics_data["analytics"]["region"][$region_name]["subregions"] = $this->sort_subregions($region['subregions']);
 		}
 		return $analytics_data;
 	}
@@ -135,6 +137,7 @@ class CountryData {
 		usort($subregions, function($a, $b){
 			return $a["count"] > $b["count"] ? -1 : 1;
 		});
+		// var_dump($subregions);
 		return $subregions;
 	}
 }
