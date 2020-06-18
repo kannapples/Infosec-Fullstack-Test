@@ -17,9 +17,9 @@ function getCountries() {
         }
     }
     document.getElementById("loading").innerHTML = '<img src="/assets/spinning_globe.gif" />'; // show loading icon before sending request
-    xhr.open("POST", "http://localhost:8765/api/index.php");
+    xhr.open("POST", "http://localhost:8765/api/CountryData.php");
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send("country-input="+country_input+"&search-type="+search_type); //send form information to php to access api
+    xhr.send("func=getCountryData&country-input="+country_input+"&search-type="+search_type); //send form information to php to access api
 }
 
 function handleResponse(serverResponse) {
@@ -31,6 +31,7 @@ function handleResponse(serverResponse) {
         document.getElementById('error-text').style.display = 'block';
         document.getElementById('error-text').innerHTML = 'No input given. Please enter a country name or country code to search.'
     } else {
+        console.log(serverResponse);
         const json_response_data = JSON.parse(serverResponse); //convert server response from JSON to Javascript object
         parseCountryData(json_response_data['data'][0], json_response_data['altsp'][0]);
         parseCountryAnalytics(json_response_data['analytics'][0]);
